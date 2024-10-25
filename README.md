@@ -254,7 +254,7 @@ $ <b>nmcli device wifi connect &lt;Name of WiFi access point&gt; password &lt;pa
 
 <dl><dd>
 <pre>
-$ <b>sudo pacman -S dbus base-devel git zip unzip btop wget openssh</b>
+$ <b>sudo pacman -S dbus base-devel git zip unzip btop wget openssh bash-completion</b>
 <div><div/>
 $ <b>sudo pacman -S curl ripgrep fd gdb python grim slurp tar cmake make</b>
 </pre>
