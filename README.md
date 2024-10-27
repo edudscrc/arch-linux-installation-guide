@@ -1,50 +1,6 @@
-### Step 01: Downloading Arch Linux image
+Download Arch Linux ISO, burn it to a usb flash and boot it (make sure secure boot is disabled).
 
-1. Go to Arch Linux downloads page https://archlinux.org/download/
-
-2. Find **HTTP Direct Downloads** section and choose any download mirror.
-   Select a mirror that is geographically closer to your location.
-
-3. On the mirror page find archive named like `archlinux-YYYY.MM.DD-x86_64.iso` or `archlinux-x86_64.iso`
-   or any other file with `.iso` suffix. Other files (like _.txt_, _.tar.gz_ and even _.iso.sig_)
-   are not needed for installation process.
-
-### Step 02: Preparing installation medium
-
-1. Insert a USB-stick into your PC with at least 2Gb of space availavle on it.
-
-2. Find corresponding block device for USB-stick in `/dev` folder. Usually it is `/dev/sdb`.
-
-<dl><dd>
-<b>IMPORTANT NOTE</b>: you need block device without a number on the end.
-If you have for example <i>/dev/sdb</i>, <i>/dev/sdb1</i> and <i>/dev/sdb2</i> you need <i>/dev/sdb</i> !
-</dd></dl>
-
-3. Burn previously downloaded Arch Linux ISO-image on a USB-stick (in my case it is `/dev/sdb`):
-
-<dl><dd>
-<pre>
-$ <b>sudo dd conv=fsync oflag=direct status=progress \
-          if=./archlinux-YYYY.MM.DD-x86_64.iso of=/dev/sdb</b>
-</pre>
-</dd></dl>
-
-### Step 03: Boot into Arch Linux medium
-
-1. Insert the installation medium into the computer on which you are installing Arch Linux.
-
-2. Power on your PC and press _boot menu key_. For _Lenovo ThinkPad X1 Carbon_ series laptop,
-   this key is `F12`.
-
-3. Boot from USB-stick and wait until boot process is finished.
-
-<dl><dd>
-<b>IMPORTANT NOTE</b>: not every device can run a system from USB-stick out of the box.
-Many BIOS'es by default come with activated <i>Secure boot</i> option.You might need to
-deactivate it in your BIOS.
-</dd></dl>
-
-### Step 04: Syncronize packages
+### Step 01: Syncronize packages
 
 1. [Optional] Connect to WiFi using `iwctl` and check connection is established:
 
@@ -54,7 +10,7 @@ $ <b>iwctl</b>
 [iwd]# <b>station wlan0 get-networks</b>
 [iwd]# <b>station wlan0 connect &lt;Name of WiFi access point&gt;</b>
 [iwd]# <b>exit</b>
-$ <b>ping 1.1.1.1</b>
+$ <b>ping google.com</b>
 </pre>
 </dd></dl>
 
@@ -66,7 +22,7 @@ $ <b>pacman -Syy</b>
 </pre>
 </dd></dl>
 
-### Step 05: Disk partitioning
+### Step 02: Disk partitioning
 
 1. Partition main storage device using `fdisk` utility. You can find storage device name using `lsblk` command.
 
@@ -142,7 +98,7 @@ $ <b>genfstab -U -p /mnt > /mnt/etc/fstab</b>
 </pre>
 </dd></dl>
 
-### Step 06: Basic configuration of new system
+### Step 03: Basic configuration of new system
 
 1. Chroot into freshly created filesystem:
 
@@ -232,7 +188,7 @@ $ <b>reboot</b>
     Section 02: Configuring userspace after initial system setup &#127919;
 </h1>
 
-### Step 01: Basic configuration of userspace
+### Step 04: Basic configuration of userspace
 
 1. Activate time syncronization using NTP:
 
@@ -254,7 +210,7 @@ $ <b>nmcli device wifi connect &lt;Name of WiFi access point&gt; password &lt;pa
 
 <dl><dd>
 <pre>
-$ <b>sudo pacman -S dbus base-devel git zip unzip btop wget openssh bash-completion</b>
+$ <b>sudo pacman -S dbus base-devel git zip unzip btop wget openssh bash-completion fuse2</b>
 <div><div/>
 $ <b>sudo pacman -S curl ripgrep fd gdb python grim slurp tar cmake make</b>
 </pre>
@@ -310,7 +266,7 @@ $ <b>sudo systemctl enable fstrim.timer</b>
 
 <dl><dd>
 <pre>
-$ <b>pacman -S mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver libva-utils</b>
+$ <b>pacman -S mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon libva-mesa-driver libva-utils xf86-video-amdgpu</b>
 </pre>
 </dd></dl>
 
@@ -347,10 +303,44 @@ $ <b>yay -S pwvucontrol</b>
 $ <b>sudo pacman -S hyprland</b>
 $ <b>sudo pacman -S swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland</b>
 $ <b>yay -S hyprpolkitagent</b>
-$ <b>sudo pacman -S waybar rofi alacritty hyprlock hyprpaper</b>
+$ <b>sudo pacman -S waybar rofi alacritty hyprlock hyprpaper cliphist thunar nwg-look</b>
 </pre>
 </dd></dl>
 
-exec-once = waybar & hyprpaper
-exec-once = swaync
-exec-once = systemctl --user start hyprpolkitagent
+Buscar dotfiles
+
+### Steam
+
+<dl><dd>
+<pre>
+$ <b>sudo pacman -S ttf-liberation lib32-systemd </b>
+Em alguns jogos com anticheat (elden ring, por exemplo), precisa colocar isso nos parâmetros de launch:
+<b>env --unset=SDL_VIDEODRIVER %command%</b>
+</pre>
+</dd></dl>
+
+### Discord
+
+<dl><dd>
+<pre>
+Instale o Vencord e aplique o tema: https://github.com/refact0r/system24/blob/main/theme/flavors/catppuccin-mocha.theme.css
+</pre>
+</dd></dl>
+
+### GTK Theme
+
+<dl><dd>
+<pre>
+Instale o seguinte tema e aplique usando o nwg-look
+https://github.com/catppuccin/gtk
+https://github.com/catppuccin/papirus-folders
+</pre>
+</dd></dl>
+
+### Firefox, alacritty, vscode, btop...
+
+Todos esses apps tem temas do catppucin no github ofical deles. Apenas buscar e instalar
+
+### Bug onde electron apps não abrem (vscode, discord, spotify, etc...)
+
+Abre o nwg-look, vai na seção "Mouse cursor" e apenas aplique qualquer tema.
