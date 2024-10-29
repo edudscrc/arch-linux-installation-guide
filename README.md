@@ -1,4 +1,8 @@
-Download Arch Linux ISO, burn it to a usb flash and boot it (make sure secure boot is disabled).
+<ol>
+<li>Download Arch Linux ISO</li>
+<li>Burn it to a USB flash</li>
+<li>Boot it (make sure <b>secure boot</b> is disabled).</li>
+</ol>
 
 ### Step 01: Syncronize packages
 
@@ -13,6 +17,8 @@ $ <b>iwctl</b>
 $ <b>ping google.com</b>
 </pre>
 </dd></dl>
+
+<b>On ethernet, you don't have to do anything</b>
 
 2. Syncronize pacman packaes:
 
@@ -91,6 +97,8 @@ $ <b>swapon /dev/nvme0n1p3</b>
 
 4. Install essential packages into new filesystem and generate fstab:
 
+<b>Obs.: if you have intel CPU, instead of amd-ucode, install intel-ucode</b>
+
 <dl><dd>
 <pre>
 $ <b>pacstrap -i /mnt base linux linux-firmware sudo nano amd-ucode</b>
@@ -121,6 +129,8 @@ $ <b>hwclock --systohc</b>
 </dd></dl>
 
 3. Setup system hostname:
+
+<b><i>yourhostname</i> is like the name of your machine. It's the name that comes after the @ (youruser@yourhostname)</b>
 
 <dl><dd>
 <pre>
@@ -225,7 +235,7 @@ $ <b>sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-robot
 </pre>
 </dd></dl>
 
-5. Enable multilib:
+5. Enable multilib (this allows installing 32-bits packages that are essential for some apps to run):
 
 <dl><dd>
 Uncomment the [multilib] section and update pacman
@@ -235,7 +245,7 @@ $ <b>sudo pacman -Sy</b>
 </pre>
 </dd></dl>
 
-6. Enable sound support on your PC:
+6. Install sound drivers and sound support (pipewire):
 
 <dl><dd>
 <pre>
@@ -262,7 +272,7 @@ $ <b>sudo systemctl enable fstrim.timer</b>
 </pre>
 </dd></dl>
 
-9. Install AMD and vulkan drivers:
+9. Install AMD and vulkan drivers (only needed for AMD, idk about nvidia/intel):
 
 <dl><dd>
 <pre>
@@ -288,7 +298,7 @@ $ <b>makepkg -si</b>
 </pre>
 </dd></dl>
 
-### Install pwvucontrol (AUR)
+### Install pwvucontrol (AUR) to control sound. (This is pavucontrol for pipewire (pw), but I think pavucontrol works too)
 
 <dl><dd>
 <pre>
@@ -296,7 +306,7 @@ $ <b>yay -S pwvucontrol</b>
 </pre>
 </dd></dl>
 
-### Hyprland
+### Hyprland (and must-have software / recommended apps)
 
 <dl><dd>
 <pre>
