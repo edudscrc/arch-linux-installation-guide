@@ -344,3 +344,11 @@ Todos esses apps tem temas do catppucin no github ofical deles. Apenas buscar e 
 ### Bug onde electron apps não abrem (vscode, discord, spotify, etc...)
 
 Abre o nwg-look, vai na seção "Mouse cursor" e apenas aplique qualquer tema.
+
+### Ubisoft Connect - Problema de conexão (testado pelo heroic games launcher)
+
+<dl><dd>
+<pre>
+$ <b>sudo pacman -S lib32-gnutls </b>
+</pre>
+</dd></dl>
