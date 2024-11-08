@@ -222,7 +222,7 @@ $ <b>nmcli device wifi connect &lt;Name of WiFi access point&gt; password &lt;pa
 <pre>
 $ <b>sudo pacman -S dbus base-devel git zip unzip btop wget openssh bash-completion fuse2</b>
 <div><div/>
-$ <b>sudo pacman -S curl ripgrep fd gdb python grim slurp tar cmake make</b>
+$ <b>sudo pacman -S curl ripgrep fd gdb python grim slurp tar cmake make eza python-gobject</b>
 </pre>
 </dd></dl>
 
@@ -231,7 +231,7 @@ $ <b>sudo pacman -S curl ripgrep fd gdb python grim slurp tar cmake make</b>
 <dl><dd>
 <pre>
 $ <b>sudo pacman -S ttf-dejavu ttf-freefont ttf-liberation ttf-droid terminus-font ttf-font-awesome</b>
-$ <b>sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-roboto ttf-roboto-mono</b>
+$ <b>sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-roboto ttf-roboto-mono ttf-jetbrains-mono</b>
 </pre>
 </dd></dl>
 
@@ -257,7 +257,7 @@ $ <b>sudo pacman -S pipewire wireplumber pipewire-audio pipewire-alsa pipewire-p
 
 <dl><dd>
 <pre>
-$ <b>sudo pacman -S bluez bluez-utils blueman</b>
+$ <b>sudo pacman -S bluez bluez-utils</b>
 $ <b>sudo systemctl enable bluetooth</b>
 </pre>
 </dd></dl>
@@ -306,12 +306,21 @@ $ <b>yay -S pwvucontrol</b>
 </pre>
 </dd></dl>
 
+
+### Install vscode from yay
+
+<dl><dd>
+<pre>
+$ <b>yay -S visual-studio-code-bin</b>
+</pre>
+</dd></dl>
+
 ### Hyprland (and must-have software / recommended apps)
 
 <dl><dd>
 <pre>
 $ <b>sudo pacman -S hyprland</b>
-$ <b>sudo pacman -S swaync xdg-desktop-portal-hyprland qt5-wayland qt6-wayland</b>
+$ <b>sudo pacman -S dunst xdg-desktop-portal-hyprland qt5-wayland qt6-wayland</b>
 $ <b>yay -S hyprpolkitagent</b>
 $ <b>sudo pacman -S waybar rofi alacritty hyprlock hyprpaper cliphist thunar nwg-look</b>
 </pre>
