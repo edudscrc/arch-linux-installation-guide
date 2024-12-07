@@ -220,9 +220,9 @@ $ <b>nmcli device wifi connect &lt;Name of WiFi access point&gt; password &lt;pa
 
 <dl><dd>
 <pre>
-$ <b>sudo pacman -S dbus base-devel git zip unzip btop wget openssh bash-completion fuse2</b>
+$ <b>sudo pacman -S dbus base-devel git btop wget openssh bash-completion fuse2</b>
 <div><div/>
-$ <b>sudo pacman -S curl ripgrep fd gdb python grim slurp tar cmake make eza python-gobject</b>
+$ <b>sudo pacman -S curl ripgrep fd python grim slurp make eza python-gobject firefox nwg-look</b>
 </pre>
 </dd></dl>
 
